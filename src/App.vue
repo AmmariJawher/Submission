@@ -1,22 +1,36 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+     <UsrMsg @inputData="updateMessage" />
+    <PosterBox/>
+    <PostItem />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import PosterBox from "./components/PosterBox.vue";
+import PostItem from "./components/PostItem.vue";
 
 export default {
   name: "app",
   components: {
-    HelloWorld
+    PosterBox,
+    PostItem
+  },
+  data: function() {
+    return {
+      childData: ""
+    };
+  },
+  methods: {
+    updateMessage(variable) {
+      this.childData= variable;
+    }
   }
 };
 </script>
 
 <style lang="scss">
+@import "../node_modules/bulma/css/bulma.css";
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
